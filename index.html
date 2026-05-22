@@ -284,6 +284,35 @@
 </head>
 <body>
 
+<script>
+  (function() {
+    // Hide entire body content immediately before rendering
+    document.documentElement.style.visibility = 'hidden';
+
+    function checkPassword() {
+      var pwd = prompt('Masukkan password untuk mengakses halaman ini:');
+      if (pwd === null) {
+        // User clicked Cancel
+        document.documentElement.style.visibility = 'visible';
+        document.body.innerHTML = '<div style="font-family:sans-serif;text-align:center;margin-top:20vh;color:#333;"><h1>Website sedang dalam pemeliharaan.</h1><p>Silakan hubungi administrator.</p></div>';
+      } else if (pwd === 'alt2026') {
+        // Correct password - show the page
+        document.documentElement.style.visibility = 'visible';
+      } else {
+        // Wrong password
+        document.documentElement.style.visibility = 'visible';
+        document.body.innerHTML = '<div style="font-family:sans-serif;text-align:center;margin-top:20vh;color:#333;"><h1>Website sedang dalam pemeliharaan.</h1><p>Silakan hubungi administrator.</p></div>';
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', checkPassword);
+    } else {
+      checkPassword();
+    }
+  })();
+</script>
+
 <!-- Scroll progress -->
 <div id="scroll-progress"></div>
 
