@@ -195,12 +195,19 @@
     white-space: nowrap;
   }
   .headline h1 .gold-text {
-    background: linear-gradient(135deg, #d4a017 0%, #f5d98a 50%, #e8b84b 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline;
-  }
-
+     background: linear-gradient(
+    180deg,
+    #ffd86b 0%,
+    #e8b84b 18%,
+    #d4a017 32%,
+    #ffffff 72%,
+    #f5f5f5 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+  text-shadow: 0 0 18px rgba(212,160,23,0.18);
+}
   /* Subheadline */
   .subhead {
     font-size: clamp(0.85rem, 2vw, 1.05rem);
@@ -227,31 +234,27 @@
   /* Countdown */
   .countdown-wrap {
     display: flex;
-    gap: clamp(4px, 2vw, 20px);
+    gap: clamp(16px, 4vw, 40px);
     align-items: flex-start;
     justify-content: center;
     margin-bottom: 56px;
     opacity: 0;
     animation: fadeUp 0.8s ease 1.3s forwards;
-    width: 100%;
-    padding: 0 8px;
   }
   .countdown-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     position: relative;
-    flex: 1;
-    max-width: 80px;
   }
   .countdown-box {
     position: relative;
     background: rgba(14,32,64,0.7);
     border: 1px solid rgba(212,160,23,0.18);
-    border-radius: 10px;
-    width: 100%;
-    aspect-ratio: 1;
+    border-radius: 12px;
+    width: clamp(70px, 18vw, 110px);
+    height: clamp(70px, 18vw, 110px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -271,7 +274,7 @@
   }
   .countdown-num {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.4rem, 5vw, 3.2rem);
+    font-size: clamp(2rem, 6vw, 3.8rem);
     font-weight: 700;
     line-height: 1;
     background: linear-gradient(135deg, #ffffff 20%, #f5d98a 80%);
@@ -287,19 +290,18 @@
     100% { transform: translateY(0); opacity: 1; }
   }
   .countdown-label {
-    font-size: clamp(0.45rem, 1.8vw, 0.65rem);
-    letter-spacing: 0.15em;
+    font-size: clamp(0.55rem, 1.5vw, 0.68rem);
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: rgba(212,160,23,0.6);
     font-weight: 600;
   }
   .countdown-sep {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-size: clamp(1.8rem, 5vw, 3rem);
     color: rgba(212,160,23,0.3);
-    padding-top: clamp(10px, 3vw, 18px);
+    padding-top: clamp(16px, 4vw, 22px);
     line-height: 1;
-    flex-shrink: 0;
   }
 
   /* Description */
@@ -451,10 +453,9 @@
 
   <!-- Headline -->
   <div class="headline">
-    <h1>
-      <span class="gold-text">Coming</span>
-      Soon
-    </h1>
+   <h1>
+  <span class="gold-text">Coming Soon</span>
+</h1>
   </div>
 
   <!-- Subhead -->
