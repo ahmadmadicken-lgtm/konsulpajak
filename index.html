@@ -936,45 +936,18 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 </script>
 
-// ─── WhatsApp Click Tracking for GA4 ───────────────────────────
-// Add this before closing </body> tag in your HTML
-
-// Track all WhatsApp clicks and send to GA4 as event
-document.addEventListener('click', function(e) {
-  // Check if clicked element or its parent is a WhatsApp link
-  let clickedLink = null;
-  
-  // Find the closest <a> tag
-  let element = e.target;
-  while (element && element !== document) {
-    if (element.tagName === 'A' && element.href.includes('wa.me')) {
-      clickedLink = element;
-      break;
-    }
-    element = element.parentElement;
-  }
-  
-  // If WhatsApp link was clicked, send event to GA4
-  if (clickedLink) {
-    // Get the button text or phone number
-    const buttonText = clickedLink.textContent.trim() || 'WhatsApp Click';
-    const phoneNumber = '62895626823797';
-    
-    // Send event to Google Analytics 4
+<!-- WhatsApp Click Tracking -->
+<script>
+document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
+  link.addEventListener('click', function() {
+    console.log('WhatsApp click tracked!');
     gtag('event', 'whatsapp_click', {
-      'phone_number': phoneNumber,
-      'button_text': buttonText,
-      'timestamp': new Date().toISOString(),
-      'user_action': 'whatsapp_engagement'
+      'phone_number': '62895626823797',
+      'button_text': this.textContent.trim()
     });
-    
-    console.log('WhatsApp click tracked:', {
-      text: buttonText,
-      phone: phoneNumber,
-      time: new Date().toLocaleTimeString()
-    });
-  }
+  });
 });
+</script>
   
 </body>
 </html>
