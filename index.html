@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ALT Tax Consultant – Solusi Pajak Tuntas, Akurat & Aman</title>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7M7RNSN7Q1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7M7RNSN7Q1');
+</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -927,5 +936,45 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 </script>
 
+// ─── WhatsApp Click Tracking for GA4 ───────────────────────────
+// Add this before closing </body> tag in your HTML
+
+// Track all WhatsApp clicks and send to GA4 as event
+document.addEventListener('click', function(e) {
+  // Check if clicked element or its parent is a WhatsApp link
+  let clickedLink = null;
+  
+  // Find the closest <a> tag
+  let element = e.target;
+  while (element && element !== document) {
+    if (element.tagName === 'A' && element.href.includes('wa.me')) {
+      clickedLink = element;
+      break;
+    }
+    element = element.parentElement;
+  }
+  
+  // If WhatsApp link was clicked, send event to GA4
+  if (clickedLink) {
+    // Get the button text or phone number
+    const buttonText = clickedLink.textContent.trim() || 'WhatsApp Click';
+    const phoneNumber = '62895626823797';
+    
+    // Send event to Google Analytics 4
+    gtag('event', 'whatsapp_click', {
+      'phone_number': phoneNumber,
+      'button_text': buttonText,
+      'timestamp': new Date().toISOString(),
+      'user_action': 'whatsapp_engagement'
+    });
+    
+    console.log('WhatsApp click tracked:', {
+      text: buttonText,
+      phone: phoneNumber,
+      time: new Date().toLocaleTimeString()
+    });
+  }
+});
+  
 </body>
 </html>
