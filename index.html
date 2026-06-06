@@ -316,6 +316,23 @@
        class="btn-gold px-5 py-2.5 rounded-lg text-sm hidden sm:inline-block">
       Konsultasi Gratis
     </a>
+    <!-- Hamburger button (mobile only) -->
+    <button id="hamburger-btn" class="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 rounded-lg hover:bg-white/10 transition-colors" onclick="toggleMobileMenu()" aria-label="Menu">
+      <span class="hamburger-line block w-5 h-0.5 bg-slate-300 transition-all duration-300"></span>
+      <span class="hamburger-line block w-5 h-0.5 bg-slate-300 transition-all duration-300"></span>
+      <span class="hamburger-line block w-5 h-0.5 bg-slate-300 transition-all duration-300"></span>
+    </button>
+  </div>
+
+  <!-- Mobile dropdown menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-navy-900/95 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
+      <a href="#layanan" onclick="closeMobileMenu()" class="mobile-nav-link px-4 py-3 rounded-lg text-slate-300 font-semibold text-sm uppercase tracking-wide hover:bg-white/10 hover:text-gold-400 transition-all">Layanan</a>
+      <a href="#portofolio" onclick="closeMobileMenu()" class="mobile-nav-link px-4 py-3 rounded-lg text-slate-300 font-semibold text-sm uppercase tracking-wide hover:bg-white/10 hover:text-gold-400 transition-all">Portofolio</a>
+      <a href="#kontak" onclick="closeMobileMenu()" class="mobile-nav-link px-4 py-3 rounded-lg text-slate-300 font-semibold text-sm uppercase tracking-wide hover:bg-white/10 hover:text-gold-400 transition-all">Kontak</a>
+      <a href="sp2dk.html" class="mobile-nav-link px-4 py-3 rounded-lg font-bold text-sm uppercase tracking-wide transition-all" style="color:#d4a017;border:1px solid rgba(212,160,23,0.35);">SP2DK ↗</a>
+      <a href="https://wa.me/62895626823797?text=Halo%20Admin%20ALT%2C%20saya%20ingin%20konsultasi%20mengenai%20pajak." target="_blank" onclick="closeMobileMenu()" class="mt-1 btn-gold px-4 py-3 rounded-lg text-sm text-center font-bold">Konsultasi Gratis</a>
+    </div>
   </div>
 </nav>
 
@@ -948,5 +965,35 @@ document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
   });
 });
 </script>
+
+<script>
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger-btn');
+  const lines = btn.querySelectorAll('.hamburger-line');
+  const isOpen = !menu.classList.contains('hidden');
+  if (isOpen) {
+    menu.classList.add('hidden');
+    lines[0].style.transform = '';
+    lines[1].style.opacity = '1';
+    lines[2].style.transform = '';
+  } else {
+    menu.classList.remove('hidden');
+    lines[0].style.transform = 'translateY(8px) rotate(45deg)';
+    lines[1].style.opacity = '0';
+    lines[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+  }
+}
+function closeMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger-btn');
+  const lines = btn.querySelectorAll('.hamburger-line');
+  menu.classList.add('hidden');
+  lines[0].style.transform = '';
+  lines[1].style.opacity = '1';
+  lines[2].style.transform = '';
+}
+</script>
+
 </body>
 </html>
